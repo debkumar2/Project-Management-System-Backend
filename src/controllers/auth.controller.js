@@ -19,7 +19,7 @@ export const loginUser = asyncHandler(async (req, res) => {
     const { identifier, password } = req.body;
     const reqInfo = {
         device_name: req.headers["user-agent"],
-        device_type: "WEB",
+        device_type: "UNKNOWN",
         ip_address: req.ip,
         user_agent: req.headers["user-agent"],
     };
@@ -37,7 +37,7 @@ export const refreshAccessToken = asyncHandler(async (req, res) => {
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken;
     const reqInfo = {
         device_name: req.headers["user-agent"],
-        device_type: "WEB",
+        device_type: "UNKNOWN",
         ip_address: req.ip,
         user_agent: req.headers["user-agent"],
     };
@@ -125,7 +125,7 @@ export const googleAuthCallback = asyncHandler(async (req, res) => {
 
     const reqInfo = {
         device_name: req.headers["user-agent"],
-        device_type: "WEB",
+        device_type: "UNKNOWN",
         ip_address: req.ip,
         user_agent: req.headers["user-agent"],
     };

@@ -54,7 +54,7 @@ export class AuthService {
         if (!user) {
             await loginHistoryRepository.createLoginHistory({
                 email: identifier,
-                login_type: "LOCAL",
+                login_type: "EMAIL_PASSWORD",
                 login_status: "FAILED",
                 failure_reason: "User not found",
                 ...reqInfo,
@@ -68,7 +68,7 @@ export class AuthService {
             await loginHistoryRepository.createLoginHistory({
                 user_id: user.id,
                 email: user.email,
-                login_type: "LOCAL",
+                login_type: "EMAIL_PASSWORD",
                 login_status: "FAILED",
                 failure_reason: "Invalid password",
                 ...reqInfo,
@@ -96,7 +96,7 @@ export class AuthService {
         await loginHistoryRepository.createLoginHistory({
             user_id: user.id,
             email: user.email,
-            login_type: "LOCAL",
+            login_type: "EMAIL_PASSWORD",
             login_status: "SUCCESS",
             ...reqInfo,
         });
