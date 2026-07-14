@@ -37,7 +37,8 @@ export class AuthService {
             phone: data.phone || null,
             password_hash: hashedPassword,
             profile_image: data.profile_image || null,
-            // (Note: Timezone and country are omitted if not in schema, can be added to profile relation if needed)
+            designation: data.designation || null,
+            bio: data.bio || null,
         });
 
         const { password_hash, ...userWithoutPassword } = newUser;

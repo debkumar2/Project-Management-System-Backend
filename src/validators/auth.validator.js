@@ -21,9 +21,8 @@ export const registerSchema = z.object({
         accept_terms: z.boolean().refine((val) => val === true, {
             message: "You must accept the terms and conditions",
         }),
-        timezone: z.string().optional(),
-        country: z.string().optional(),
-        login_provider: z.enum(["LOCAL", "GOOGLE"]).default("LOCAL"),
+        designation: z.string().max(100).optional(),
+        bio: z.string().optional(),
     }).refine((data) => data.password === data.confirm_password, {
         message: "Passwords do not match",
         path: ["confirm_password"],
@@ -63,8 +62,8 @@ export const updateProfileSchema = z.object({
         last_name: z.string().max(100).optional(),
         phone: z.string().regex(/^\+?[1-9]\d{1,14}$/, "Invalid phone number format").optional().or(z.literal('')),
         profile_image: z.string().optional(),
-        timezone: z.string().optional(),
-        country: z.string().optional(),
+        designation: z.string().max(100).optional(),
+        bio: z.string().optional(),
     }),
 });
 
