@@ -8,6 +8,7 @@ import rateLimit from "express-rate-limit";
 
 import { env } from "./src/config/env.js";
 import authRoutes from "./src/routes/auth.routes.js";
+import organizationRoutes from "./src/routes/organization.routes.js";
 import { errorHandler } from "./src/middlewares/error.middleware.js";
 
 const app = express();
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/organizations", organizationRoutes);
 
 // Global Error Handler
 app.use(errorHandler);
